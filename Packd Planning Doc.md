@@ -10,37 +10,45 @@
 > *Options*
 > 
 > Any duration btwn 2 - 14 days (>14 day trips, we give them the 14 day schedule and tell them to do laundry).
-### Base Lists
-#### Clothes (neutral weather, 2 - 3 days)
+### Base Lists (2 - 3 days)
+#### Clothes
 - 1 bottom
 - 2 tops
 - 1 dress
 - 1 outerwear
 - 2 pairs of shoes
-#### Travel Items (neutral weather, 2 - 3 days)
-- passport/piece of ID
-### Duration Variations
-Note: The number of clothes added from the base list are in brackets.
-#### 4 days
+#### Travel Items
+**Duration Variations**: The number of clothes added from the base list are in brackets.
+### 4 days
+#### Clothes
 - 2 bottoms (\+ 1 bottom)
 - 2 tops
 - 1 dress
 - 1 outerwear
 - 2 pairs of shoes
-#### 5 - 7 days
+#### Travel Items
+### 5 - 7 days
+#### Clothes
 - 3 bottoms (\+ 2 bottoms)
 - 4 tops (\+ 2 tops)
 - 1 dress
 - 1 outerwear
 - 2 pairs of shoes
-#### 8 - 10 days
-#### 11 days
-#### 12 - 14 days
+#### Travel Items
+### 8 - 10 days
+#### Clothes
+#### Travel Items
+### 11 days
+#### Clothes
+#### Travel Items
+### 12 - 14 days
+#### Clothes
 - 4 bottoms (\+ 3 bottoms)
 - 5 tops (\+ 3 tops)
 - 2 dresses (\+ 1 dress)
 - 2 outerwears (+ 1 outerwear)
 - 2 pairs of shoes
+#### Travel Items
 
 # Chat GPT Advice
 Certainly! When developing an app to help users pack their suitcases, it's helpful to ask specific questions to tailor the packing list to their needs. Here's a list of yes/no questions and corresponding travel items/clothes to consider adding:
