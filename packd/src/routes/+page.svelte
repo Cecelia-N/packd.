@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+
+	import { goto } from "$app/navigation";
+
+</script>
+<h1>Packd</h1>
+<p>Welcome to packed! Your personal supercharged packing list</p>
+<button type='button' on:click={() => goto('/trip-details')}>Get started</button>
