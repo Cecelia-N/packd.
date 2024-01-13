@@ -3,16 +3,23 @@ import { writable, type Writable } from "svelte/store";
 
 export function setStores() {
     const clothes = writable<string[]>([
-        'Sweater',
-        'pants'
+      
     ]);
     const toiletries = writable<string[]>([
-        'toothpaste',
-        'hairbrush'
+       
+    ]);
+    const tech = writable<string[]>([
+       
+    ]);
+
+    const misc = writable<string[]>([
+        
     ]);
 
     setContext('clothes', clothes)
     setContext('toiletries', toiletries)
+    setContext('tech', tech);
+    setContext('misc', misc)
 }
 
 export function getClothes() {
@@ -21,4 +28,11 @@ export function getClothes() {
 
 export function getToiletries() {
     return getContext<Writable<string[]>>('toiletries');
+}
+
+export function getTech() {
+    return getContext<Writable<string[]>>('tech');
+}
+export function getMisc() {
+    return getContext<Writable<string[]>>('misc');
 }
