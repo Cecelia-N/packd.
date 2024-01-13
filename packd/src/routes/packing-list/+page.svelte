@@ -4,8 +4,6 @@
     import List from '$lib/components/List.svelte'
     
     export let data: PageData;
-
-    type listType = 'clothes' | 'toiletries'
     const clothes = getClothes();
     const toiletries = getToiletries();
 </script>
