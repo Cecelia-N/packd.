@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { getThreshold } from "$lib/helpers/weatherHelper";
+
     const key = '2c9e2d11842e40a3827193356241301';
     const q = 'windsor';
 
@@ -75,9 +77,20 @@ let testObject2 = {"location":{"name":"Windsor","region":"Ontario","country":"Ca
 
 </script>
 
-<input bind:value={city}>
-<input bind:value={startDate} type="date">
-<input bind:value={endDate} type="date">
+<div>
+    <label for="city">City</label>
+    <input name="city" bind:value={city}>
+</div>
+
+<div>
+    <label for="startDate">Start Date</label>
+    <input name="startDate" bind:value={startDate} type="date">
+</div>
+
+<div>
+    <label for="endDate">End Date</label>
+    <input name="endDate" bind:value={endDate} type="date">
+</div>
 
 <input bind:value={days}>
 <button on:click={() => {getWeather(city, days)}}>Get my weather</button>
@@ -89,22 +102,5 @@ let testObject2 = {"location":{"name":"Windsor","region":"Ontario","country":"Ca
 {JSON.stringify(weatherObject)}
 
 <p>Temp: {testObject.current.temp_c}</p>
+<p>Threshold: {getThreshold(testObject.current.temp_c)}</p>
 {/await}
-
-
-
-<!-- <script lang="ts">
-    import {weather} from '$lib/server/weather.server';
-
-    let response: Promise<any>;
-    function getData(){
-        response = weather.getWeather();
-    }
-  </script>
-  
-
-  {#if response}
-    {response}
-  {/if}
-  <h1>Weather App</h1>
-<button on:click={getData}>Get Weather</button> -->
