@@ -5,6 +5,8 @@
 
 [Specific Capsule Lists for Trips (winter, business, summer)](https://blog.tortugabackpacks.com/travel-capsule-wardrobe/)
 
+[Ultimate Packing List](https://www.smartertravel.com/the-ultimate-packing-list/)
+
 # Form questions
 ## 1. How long is your trip? (MOST IMPORTANT QUESTION)
 > *Options*
@@ -31,6 +33,7 @@
 - first aid kit
 - house keys
 - tissues
+
 **Duration Variations**: The number of clothes added from the base list are in brackets.
 ### 4 days
 #### Clothes
