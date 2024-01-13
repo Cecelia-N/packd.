@@ -30,16 +30,26 @@
 ### 5 - 7 days
 #### Clothes
 - 3 bottoms (\+ 2 bottoms)
-- 4 tops (\+ 2 tops)
+- 3 tops (\+ 1 top)
 - 1 dress
 - 1 outerwear
 - 2 pairs of shoes
 #### Travel Items
 ### 8 - 10 days
 #### Clothes
+- 3 bottoms (\+ 2 bottoms)
+- 4 tops (\+ 2 tops)
+- 2 dresses (\+ 1 dress)
+- 1 outerwear
+- 2 pairs of shoes
 #### Travel Items
 ### 11 days
 #### Clothes
+- 3 bottoms (\+ 2 bottoms)
+- 5 tops (\+ 3 tops)
+- 2 dresses (\+ 1 dress)
+- 1 outerwear
+- 2 pairs of shoes
 #### Travel Items
 ### 12 - 14 days
 #### Clothes
@@ -49,7 +59,10 @@
 - 2 outerwears (+ 1 outerwear)
 - 2 pairs of shoes
 #### Travel Items
-
+## 2. Where are you traveling to? (MOST IMPORTANT QUESTION)
+> *Options*
+> 
+> Location picker, where we'll use the weat
 # Chat GPT Advice
 Certainly! When developing an app to help users pack their suitcases, it's helpful to ask specific questions to tailor the packing list to their needs. Here's a list of yes/no questions and corresponding travel items/clothes to consider adding:
 
