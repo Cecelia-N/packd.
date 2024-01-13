@@ -33,6 +33,10 @@
 
 {JSON.stringify(form)}
 <form>
+
+    <label for="location">Where are you going to?</label><br>
+    <input type="text" id="location" name="location" bind:value={form.location}><br><br>
+
     <label for="length">How long is your trip?</label><br>
     <input type="date" id="startDate" name="startDate" >
     <input type="date" id="endDate" name="endDate"><br><br>
@@ -44,11 +48,6 @@
         <option value="mild">Mild Climate</option>
         <option value="hot">Hot Climate</option>
     </select><br><br> -->
-
-
-    <label for="location">Where are you going to?</label><br>
-    <input type="text" id="location" name="location" bind:value={form.location}><br><br>
-    
 
     <label for="formal">Do you plan to go to formal events during the trip? How often?</label><br>
     <input type="radio" id="formal0" name="formal" bind:group={form.formalNum} value=0 >
