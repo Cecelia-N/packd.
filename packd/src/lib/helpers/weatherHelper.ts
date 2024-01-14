@@ -1,3 +1,5 @@
+import { DaysBetween } from "./utils";
+
 export function getThreshold(temp_c: number): 'freezing' | 'chilly'| 'warm' | 'hot' {
     if (temp_c < 0) {
         return 'freezing'
@@ -43,4 +45,20 @@ const response = fetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=
         };
     });
     return response;
+}
+
+
+export async function getAvgTemp(city: string, date: Date): Promise<number> {
+    const daysFromToday = DaysBetween(new Date, date);
+    console.log(daysFromToday);
+
+    let weatherObject;
+    if (daysFromToday < 14) {
+        weatherObject = await getForecast(city, date)
+    } else {
+        weatherObject = await getFutureWeather(city, date);
+    }
+    const avgTemp = JSON.parse(JSON.stringify(weatherObject)).forecast.forecastday[0].day.avgtemp_c
+    return avgTemp;
+
 }

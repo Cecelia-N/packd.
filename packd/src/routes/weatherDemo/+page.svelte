@@ -4,7 +4,7 @@
 
     let weatherObject: Promise<any>;
     let avgTemp: number;
-    async function process(){
+    async function getAvgTemp(){
         weatherObject = await getFutureWeather(city, startDate);
         const avgTemp = JSON.parse(JSON.stringify(weatherObject)).forecast.forecastday[0].day.avgtemp_c
         const dress = getThreshold(avgTemp)

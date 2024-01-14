@@ -1,24 +1,14 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
     // import {getToiletries, getClothes} from '$lib/stores/packinglist'
     // const tList = getToiletries();
-    let form: {
-        startDate: String,
-        endDate: String,
-        weather: string,
-        location: string,
-        formalNum: number,
-        swimmingNum: number,
-        outdoorNum: number,
-        toiletries: number,
-        electronics: number,
-        shopping: number,
-        medication: boolean
-        
-    } = {
-        startDate: "",
-        endDate: "",
-        weather: "",
+    import {createPackingList, type form} from '$lib/helpers/packer'
+	import { getClothes } from '$lib/stores/packinglist';
+   
+    let form: form = {
         location: "",
+        startDate: new Date(),
+        endDate: new Date(),
         formalNum: 0,
         swimmingNum: 0,
         outdoorNum: 0,
@@ -27,6 +17,15 @@
         shopping: 0,
         medication: false
 
+    }
+    const clothes = getClothes();
+
+    async function submitForm(){
+        const lists = createPackingList(form);
+        $clothes = (await lists).clothes;
+        setTimeout(()=> {
+            goto('/packing-list')
+        })
     }
 
 </script>
@@ -37,18 +36,10 @@
     <label for="location">Where are you going to?</label><br>
     <input type="text" id="location" name="location" bind:value={form.location}><br><br>
 
-    <label for="length">How long is your trip?</label><br>
-    <input type="date" id="startDate" name="startDate" >
-    <input type="date" id="endDate" name="endDate"><br><br>
-
-
-    <!-- <label for="weather">What's the weather looking like at your destination?</label><br>
-    <select name="weather" id="weather" bind:value={form.weather}>
-        <option value="cold" >Cold Climate</option>
-        <option value="mild">Mild Climate</option>
-        <option value="hot">Hot Climate</option>
-    </select><br><br> -->
-
+   <label for="length">How long is your trip?</label><br>
+    <input type="date" id="startDate" name="startDate" bind:value={form.startDate}>
+    <input type="date" id="endDate" name="endDate" bind:value={form.endDate}><br><br>
+ <!-- 
     <label for="formal">Do you plan to go to formal events during the trip? How often?</label><br>
     <input type="radio" id="formal0" name="formal" bind:group={form.formalNum} value=0 >
     <label for="formal0">Not at all.</label><br>
@@ -106,11 +97,11 @@
     <label for="medication">Nah, I don't want to bring any.</label><br>
     <input type="radio" id="medication1" name="medication" bind:group={form.electronics} value=false>
     <label for="medication">Yes, please, I'd like to bring some.</label><br>
-
+ -->
 
     <p>Don't worry, if you feel like you've missed anything, you'll always be able to add it to the final list!</p>
 
 
-    <button type="submit">Get your packing list now!</button>
+    <button type="button" on:click={submitForm}>Get your packing list now!</button>
     
 </form>

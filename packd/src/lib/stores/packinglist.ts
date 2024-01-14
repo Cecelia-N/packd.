@@ -1,18 +1,22 @@
 import { getContext, setContext } from "svelte";
 import { writable, type Writable } from "svelte/store";
+export interface ListItem {
+    name: string,
+    quantity: number
+}
 
 export function setStores() {
-    const clothes = writable<string[]>([
+    const clothes = writable<ListItem[]>([
       
     ]);
-    const toiletries = writable<string[]>([
+    const toiletries = writable<ListItem[]>([
        
     ]);
-    const tech = writable<string[]>([
+    const tech = writable<ListItem[]>([
        
     ]);
 
-    const misc = writable<string[]>([
+    const misc = writable<ListItem[]>([
         
     ]);
 
@@ -23,16 +27,16 @@ export function setStores() {
 }
 
 export function getClothes() {
-    return getContext<Writable<string[]>>('clothes');
+    return getContext<Writable<ListItem[]>>('clothes');
 }
 
 export function getToiletries() {
-    return getContext<Writable<string[]>>('toiletries');
+    return getContext<Writable<ListItem[]>>('toiletries');
 }
 
 export function getTech() {
-    return getContext<Writable<string[]>>('tech');
+    return getContext<Writable<ListItem[]>>('tech');
 }
 export function getMisc() {
-    return getContext<Writable<string[]>>('misc');
+    return getContext<Writable<ListItem[]>>('misc');
 }
