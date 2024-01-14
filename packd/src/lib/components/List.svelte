@@ -1,6 +1,8 @@
 <script lang="ts">
+	import type { ListItem } from "$lib/stores/packinglist";
+
     export let title: string;
-    export let list: string[];
+    export let list: ListItem[];
 
 
     function removeItem(index: number){
@@ -9,7 +11,7 @@
     }
 
     function addItem(){
-        list.push('')
+        list.push({name: '',quantity: 1})
         list = list;
     }
 </script>
@@ -19,8 +21,10 @@
     <div class='list-item'>
         <input type="checkbox" name="item{i}">
         <label for="item{i}">
-            <input type='text'bind:value={item}>
+            <input type='text'bind:value={item.name}>
         </label>
+        <label for="quantity{i}">X</label>
+        <input type="number" name="quantity{i}" bind:value={item.quantity}>
         <button on:click={()=>{removeItem(i)}}>Remove item</button>
     </div>
 {/each}
