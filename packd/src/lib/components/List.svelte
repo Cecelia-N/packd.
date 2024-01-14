@@ -3,24 +3,28 @@
 
     export let title: string;
     export let list: ListItem[];
+    let checked: boolean[] = [];
 
-
+    list.forEach(item => {
+        checked.push(false)
+    })
     function removeItem(index: number){
        list.splice(index, 1);
+       checked.splice(index, 1);
        list = list
     }
 
     function addItem(){
-        list.push({name: '',quantity: 1})
+        list.push({name: '',quantity: 1});
+        checked.push(false);
         list = list;
     }
 </script>
 <section>
-    
     <h3>{title}</h3>
     {#each list as item, i }
-        <div class='list-item'>
-            <input type="checkbox" name="item{i}">
+        <div class='list-item {checked[i]?'complete':'incomplete'}'>
+            <input type="checkbox" name="item{i}" bind:value={checked[i]}>
             <label for="item{i}">
                 <input type='text'bind:value={item.name}>
             </label>
@@ -46,6 +50,9 @@
         box-shadow: 5px 5px 5px var(--grey);
         border-radius: 8px;
         margin-bottom: .5rem;
+    }
+    .complete {
+        box-shadow: none;
     }
     section {
         border: 1px solid var(--grey);
@@ -73,5 +80,5 @@
         width: 1.5rem;
      
     }
-
+  
 </style>
