@@ -16,4 +16,19 @@ body, p, h2,h3, ul, li, form, input, button {
 
 h1{
     font-family: "Lexend Giga";
+    color: var(--creme);
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.2rem
+}
+
+.btn-cta{
+    background-color: var(--grey);
+    padding: 10px;
+    border: none;
+    color: var(--creme);
+    min-width: fit-content;
 }
