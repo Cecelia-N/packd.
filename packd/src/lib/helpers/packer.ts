@@ -16,13 +16,70 @@ export interface form  {
     
 }
 
+function packToiletries(form: form) {
+    const basics = ["toothbrush", 'toothpaste', 'hairbrush', 'skincare', 'menstral products'];
+    const extras = ["shampoo", 'conditioner', 'lip balm', 'nail clippers', 'first-aid kit'];
+    const toiletries: ListItem[] = [];
+    if (form.toiletries >=1) {
+        // basics  
+        basics.forEach((item) => {
+            toiletries.push({ name: item, quantity: 1 })
+        }); 
+    }
+    if (form.toiletries == 2) {
+        // add the extra stuff
+        extras.forEach((item) => {
+            toiletries.push({ name: item, quantity: 1 })
+        });
+    }
+    return toiletries;
+}
+
+function packTech(form: form) {
+    const tech: ListItem[] = [];
+    const basics = ['phone charger', 'headphones or earbuds'];
+    const extras = ['laptop', 'laptop charger', 'tablet', 'camera', 'travel pillow']
+     // basics  
+     basics.forEach((item) => {
+        tech.push({ name: item, quantity: 1 })
+     }); 
+    if (form.electronics === 1) {
+         // basics  
+         extras.forEach((item) => {
+            tech.push({ name: item, quantity: 1 })
+        }); 
+    }
+    return tech;
+}
+
+
 export async function createPackingList(form: form) {
     const clothes = await packWeatherItems(form);
+    if (form.formalNum > 0) {
+        clothes.push({ name: 'formal outfit', quantity: form.formalNum });
+    }
+    if (form.swimmingNum > 0) {
+        clothes.push({ name: 'swimsuit', quantity: form.swimmingNum });
+    }
+    if (form.outdoorNum > 0) {
+        clothes.push({ name: 'gym shorts or yoga pants', quantity: form.outdoorNum  });
+        clothes.push({ name: 'sneakers', quantity: 1 });
+        clothes.push({ name: 'athletic top', quantity: form.outdoorNum });
+        
+    }
 
+    const toiletries = packToiletries(form);
+    const tech = packTech(form);
+    // const misc = packMisc(form);
     return {
-        clothes
+        clothes,
+        toiletries,
+        tech,
+        // misc
     }
 }
+
+
 
 async function packWeatherItems(form: form) {
     const clothes: ListItem[] = [];
