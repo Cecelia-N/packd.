@@ -3,8 +3,8 @@ import { DaysBetween } from "./utils";
 import { getAvgTemp, getThreshold } from "./weatherHelper";
 
 export interface form  {
-    startDate: Date;
-    endDate: Date;
+    startDate: Date | undefined;
+    endDate: Date | undefined;
     location: string;
     formalNum: number;
     swimmingNum: number;
@@ -81,6 +81,7 @@ export async function createPackingList(form: form) {
 
 async function packWeatherItems(form: form) {
     const clothes: ListItem[] = [];
+    if (form.startDate !== undefined && form.endDate !== undefined) {
     const travelLength = DaysBetween(form.startDate, form.endDate);
     console.log(travelLength)
     const singlePackers = {
@@ -136,6 +137,6 @@ async function packWeatherItems(form: form) {
 
     Object.keys(multiPackers).forEach((key, value) => {
         clothes.push({name: key, quantity: value})
-    })
+    })}
     return clothes
 }

@@ -5,8 +5,8 @@
    
     let form: form = {
 		location: "",
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: undefined,
+        endDate: undefined,
 		formalNum: 0,
 		swimmingNum: 0,
 		outdoorNum: 0,
@@ -58,7 +58,7 @@
             
             <label for="endDate">End Date</label>
             <input type="date" id="endDate" name="endDate" bind:value={form.endDate}><br><br>
-            {#if form.startDate !== today && form.endDate !== today }
+            {#if form.startDate != undefined && form.endDate !== undefined }
             <a class="next" href="#row2">Next</a>
             {/if}
         </div>
