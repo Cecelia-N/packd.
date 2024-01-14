@@ -11,8 +11,6 @@ export interface form  {
     outdoorNum: number;
     toiletries: number;
     electronics: number;
-    shopping: number;
-    medication: boolean
     
 }
 
