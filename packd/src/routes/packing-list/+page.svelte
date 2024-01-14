@@ -10,7 +10,7 @@
     const misc = getMisc();
 </script>
 <section>
-<h2>Your list.</h2>
+<h1>Your list.</h1>
     <List title="Clothes" list={$clothes}></List>
 
     <List title="Toiletries" list={$toiletries} ></List>
@@ -28,7 +28,7 @@
         border-radius: 5px;
         margin: 2rem;
     }
-    h2 {
+    h1 {
        text-align: center;
     }
 </style>
