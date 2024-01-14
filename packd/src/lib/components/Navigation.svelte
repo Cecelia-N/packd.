@@ -52,6 +52,7 @@
         font-weight: 600;
         display: flex;
         align-items: center;
+        border: none;
     }
 
 </style>
