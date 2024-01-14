@@ -4,8 +4,8 @@
 
 <header>
     <div style="justify-content:left">
-        <h1><a href='/'>packd.</a></h1>
-        <h3>explore with ease.</h3>
+        <h1 class="logo"><a href='/'>packd.</a></h1>
+        <p class="slogan">explore with ease.</p>
     </div>
     <button class="start-now" ><a href="/trip-details"> start now!</a></button>    
 </header>
@@ -23,12 +23,13 @@
         right: 1rem;
         margin: 0.8rem;
     }
-    h1{
+    .logo {
+        color: black;
         margin: 0;
         margin-left: 1rem;
         font-size:xx-large;
     }
-    h3 {
+    .slogan {
         margin-top: 0;
         margin-bottom: 1rem;
         margin-left: 2rem;
