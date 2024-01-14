@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&display=swap');
-
+:root {
+    --grey: #414143;
+    --creme: #FFFFCC;
+    --coral: #E3846B;
+    --dark-coral: #A84528;
+}
+body {
+    background-color: var(--grey);
+    margin: 0;
+}
 body, p, h2,h3, ul, li, form, input, button {
     font-family: "Lexend Deca";
 }
