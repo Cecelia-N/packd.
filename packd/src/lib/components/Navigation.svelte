@@ -1,5 +1,10 @@
 <script lang="ts">
-
+    import {getClothes, getToiletries, getTech, getMisc} from '$lib/stores/packinglist'
+const clothes = getClothes();
+const toiletries = getToiletries();
+const tech = getTech();
+const misc = getMisc();
+$: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 || $misc.length > 0)
 </script>
 
 <header>
@@ -7,7 +12,11 @@
         <h1 class="logo"><a href='/'>packd.</a></h1>
         <p class="slogan">explore with ease.</p>
     </div>
-    <button class="start-now" ><a href="/trip-details"> start now!</a></button>    
+    {#if !hasList}
+        <button class="start-now" ><a href="/trip-details"> start now!</a></button>    
+    {:else}
+        <button class="start-now" ><a href="/packing-list"> Your list.</a></button>    
+    {/if}
 </header>
 
 <style>
@@ -46,13 +55,14 @@
     button{
         background-color: #E3846B;
         color: #414143;
-        padding: 1rem;
+        padding: 1.2rem;
         height: 1rem;
         font-size: small;
         font-weight: 600;
         display: flex;
         align-items: center;
         border: none;
+        font-size: 1.3rem;
     }
 
 </style>

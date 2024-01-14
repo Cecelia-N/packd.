@@ -1,16 +1,19 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-    import {getClothes, getMisc, getTech, getToiletries} from '$lib/stores/packinglist'
+    import {getClothes, getMisc, getTech, getTemp, getToiletries, getCity} from '$lib/stores/packinglist'
     import List from '$lib/components/List.svelte'
     
-    export let data: PageData;
     const clothes = getClothes();
     const toiletries = getToiletries();
     const tech = getTech();
     const misc = getMisc();
+    const temp = getTemp();
+    const city = getCity();
 </script>
 <section>
 <h1>Your list.</h1>
+{#if $temp !== undefined && $city!== undefined}
+<p>It's going to be {$temp}°c in {$city}</p>
+{/if}
     <List title="Clothes" list={$clothes}></List>
 
     <List title="Toiletries" list={$toiletries} ></List>
@@ -24,11 +27,16 @@
     section {
         background-color: #E3846B;
         padding: 1rem;
-        box-shadow: 5px 5px 5px #414143;
+        box-shadow: 5px -2px  var(--creme);
         border-radius: 5px;
-        margin: 2rem;
+        margin: 0 auto;
+        max-width: 70%;
+        margin-top: 1rem;
     }
     h1 {
        text-align: center;
+    }
+    p {
+        text-align: center;
     }
 </style>

@@ -26,8 +26,10 @@
 <section>
     <h3>{title}</h3>
     {#each list as item, i }
-        <div class='list-item {checked[i]?'complete':'incomplete'}'>
-            <input type="checkbox" name="item{i}" bind:checked={checked[i]}>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div class='list-item {checked[i]?'complete':'incomplete'}' >
+            <input class="checkmark" type="checkbox" name="item{i}" bind:checked={checked[i]}>
             {#if !checked[i]}
             <label for="item{i}">
                 <input type='text'bind:value={item.name}>
@@ -40,11 +42,17 @@
             <button class="remove" on:click={()=>{removeItem(i)}}>❌</button>
         </div>
     {/each}
-    <button on:click={()=> addItem()}>Add Item</button>
+    <button class="add" on:click={()=> addItem()}>Add Item</button>
     
 </section>
 
 <style>
+    p {
+        display: inline;
+        width: fit-content;
+        margin: 0;
+        text-decoration: line-through;
+    }
     .list-item {
         border: .5px solid var(--grey);
         padding: 10px;
@@ -58,9 +66,14 @@
     section {
         border: 1px solid var(--grey);
         padding: 10px;
-        margin: 1rem;
         border-radius: 8px;
+        border: 2px solid var(--creme);
         box-shadow: 5px 5px 5px var(--grey);
+        max-width: 800px;
+        align-self: center;
+        margin: 0 auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
     .remove {
         border: none;
@@ -79,7 +92,15 @@
     }
     input[type=number]{
         width: 1.5rem;
-     
+    }
+
+    .add{
+        background-color: var(--creme);
+        color: var(--dark-coral);
+        border: none;
+        box-shadow: 5px 5px 5px var(--grey);
+        padding: .5rem;
+        margin-top: 1rem;
     }
 
 </style>

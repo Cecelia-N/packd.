@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
     import {createPackingList, type form} from '$lib/helpers/packer'
-	import { getClothes, getMisc, getTech, getToiletries } from '$lib/stores/packinglist';
+	import { getClothes, getMisc, getTech, getTemp, getToiletries, getCity } from '$lib/stores/packinglist';
+	import { fly } from 'svelte/transition';
    
     let form: form = {
 		location: "",
@@ -16,6 +17,8 @@
     const clothes = getClothes();
     const toiletries = getToiletries();
     const tech = getTech();
+    const avgTemp = getTemp();
+    const city = getCity();
     // const misc = getMisc();
 
     async function submitForm(){
@@ -23,12 +26,14 @@
         $clothes = (await lists).clothes;
         $toiletries = (await lists).toiletries;
         $tech = (await lists).tech;
+        $avgTemp = (await lists).avgTemp;
+        $city = form.location;
         // $misc = (await lists).misc;
         setTimeout(()=> {
             goto('/packing-list')
         })
     }
-    const today = new Date();
+
 </script>
 
 <!-- {JSON.stringify(form)} -->
@@ -42,7 +47,9 @@
             <label for="location">City, state/province</label>
             <input type="text" id="location" name="location" bind:value={form.location}><br><br>
             {#if form.location !== ''}
-            <a class="next" href="#row1">Next</a>
+            <a in:fly={{x:-300, duration: 1000}} class="next" href="#row1">Next</a>
+            {:else}
+            <div class="spacer"></div>
             {/if}
         </div>
     </div>
@@ -59,7 +66,9 @@
             <label for="endDate">End Date</label>
             <input type="date" id="endDate" name="endDate" bind:value={form.endDate}><br><br>
             {#if form.startDate != undefined && form.endDate !== undefined }
-            <a class="next" href="#row2">Next</a>
+            <a class="next" href="#row2" in:fly={{x:-300, duration: 1000}}>Next</a>
+            {:else}
+                <div class="spacer"></div>
             {/if}
         </div>
 
@@ -71,6 +80,7 @@
             <legend >How many formal events will you be attending?</legend>
         </div>
         <div class="column-answer">
+            <label for="formal">Number of events</label>
             <input name="formal" type="number" min=0 bind:value={form.formalNum}>
             <a class="next" href="#row3">Next</a>
         </div>
@@ -189,10 +199,11 @@
     .row{
         margin: 3rem;
         box-shadow: 5px 5px 5px var(--dark-coral);
-        background-color: #FFFFCC;
         display: flex;
         min-height: 25rem;
-        width: 80%
+        width: 80%;
+        
+        background-color: var(--creme);
     }
     .final {
         flex-direction: column;
@@ -201,6 +212,7 @@
     }
     .column-question{
         flex: 50%;
+        padding-top: 4rem;
     }
     .column-answer{
         display:flex;
@@ -214,5 +226,24 @@
         color:var(--creme);
         width: fit-content;
         align-self: center;
+    }
+
+    input[type='number']{
+        margin-bottom: 2rem;
+    }
+    .spacer {
+        padding: 1rem;
+    }
+    .next {
+        background-color: var(--coral);
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        padding: 1rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        box-shadow: 5px 5px 5px var(--dark-coral);
+        width: fit-content;
+        margin-top: 1rem;
     }
 </style>

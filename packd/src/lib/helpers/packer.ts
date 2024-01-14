@@ -65,7 +65,7 @@ export async function createPackingList(form: form) {
         clothes.push({ name: 'athletic top', quantity: form.outdoorNum });
         
     }
-
+    const avgTemp = await getAvgTemp(form.location, form.startDate ? form.startDate : new Date())
     const toiletries = packToiletries(form);
     const tech = packTech(form);
     // const misc = packMisc(form);
@@ -73,11 +73,10 @@ export async function createPackingList(form: form) {
         clothes,
         toiletries,
         tech,
+        avgTemp
         // misc
     }
 }
-
-
 
 async function packWeatherItems(form: form) {
     const clothes: ListItem[] = [];

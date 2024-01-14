@@ -8,4 +8,15 @@
     setStores();
 </script>
 <Navigation></Navigation>
+<main>
 <slot></slot>
+</main>
+
+
+<style>
+    main{
+        background-image: url('/pretty-globe.png');
+        background-size: contain;
+        /* background-position: center; */
+    }
+</style>

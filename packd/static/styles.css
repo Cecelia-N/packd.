@@ -31,4 +31,5 @@ h2 {
     border: none;
     color: var(--creme);
     min-width: fit-content;
+    font-size: 1.3rem
 }

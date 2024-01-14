@@ -5,10 +5,10 @@
 </script>
 <main>
 <section>
-    <h1>Packd.</h1>
+    <h1>packd.</h1>
     <h2>Your personal supercharged packing list.</h2>
 
-    <button class="btn-cta" type='button' on:click={() => goto('/trip-details')}>Get started</button>
+    <button class="btn-cta" type='button' on:click={() => goto('/trip-details')}>get started</button>
 </section>
 </main>
 <style>
@@ -23,10 +23,8 @@
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
-        align-content: center;
-        align-self: center;
         min-width: 80%;
-        height: 150%;
+        height: 100vh;
         margin: 0 auto;
         padding: 3rem;
     }
@@ -34,12 +32,10 @@
     h1, h2 {
         text-align: center;
     }
-    h2 {
-        padding-left: 4rem;
-        padding-right: 4rem;
-    }
+
     h1{
-        margin-top: 0;
+        margin-top: 4;
+        font-size: 3rem;
     }
 
     .btn-cta {

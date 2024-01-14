@@ -20,10 +20,15 @@ export function setStores() {
         
     ]);
 
+    const avgTemp = writable<number>();
+    const city = writable<string>();
+
     setContext('clothes', clothes)
     setContext('toiletries', toiletries)
     setContext('tech', tech);
-    setContext('misc', misc)
+    setContext('misc', misc);
+    setContext('avgTemp', avgTemp)
+    setContext('city', city)
 }
 
 export function getClothes() {
@@ -39,4 +44,10 @@ export function getTech() {
 }
 export function getMisc() {
     return getContext<Writable<ListItem[]>>('misc');
+}
+export function getTemp() {
+    return getContext<Writable<number>>('avgTemp');
+}
+export function getCity() {
+    return getContext<Writable<string>>('city');
 }
