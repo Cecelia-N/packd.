@@ -11,6 +11,7 @@
     function removeItem(index: number){
        list.splice(index, 1);
        checked.splice(index, 1);
+       checked = checked;
        list = list
     }
 
@@ -18,18 +19,24 @@
         list.push({name: '',quantity: 1});
         checked.push(false);
         list = list;
+        checked = checked;
     }
+
 </script>
 <section>
     <h3>{title}</h3>
     {#each list as item, i }
         <div class='list-item {checked[i]?'complete':'incomplete'}'>
-            <input type="checkbox" name="item{i}" bind:value={checked[i]}>
+            <input type="checkbox" name="item{i}" bind:checked={checked[i]}>
+            {#if !checked[i]}
             <label for="item{i}">
                 <input type='text'bind:value={item.name}>
             </label>
             <label for="quantity{i}">x</label>
             <input type="number" name="quantity{i}" bind:value={item.quantity}>
+            {:else}
+                <p class="complete">{item.name} x {item.quantity}</p>
+            {/if}
             <button class="remove" on:click={()=>{removeItem(i)}}>❌</button>
         </div>
     {/each}
@@ -38,12 +45,6 @@
 </section>
 
 <style>
-    :root {
-        --grey: #414143;
-        --creme: #FFFFCC;
-        --coral: #E3846B;
-        --dark-coral: #A84528;
-    }
     .list-item {
         border: .5px solid var(--grey);
         padding: 10px;
@@ -80,5 +81,5 @@
         width: 1.5rem;
      
     }
-  
+
 </style>
