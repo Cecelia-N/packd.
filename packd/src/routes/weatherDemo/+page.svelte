@@ -27,50 +27,7 @@
     let city = ''
     let days = 1;
 
-    let testObject = {
-        "location":{
-            "name":"Windsor",
-            "region":"Ontario",
-            "country":"Canada",
-            "lat":42.33,
-            "lon":-83.03,
-            "tz_id":"America/Detroit",
-            "localtime_epoch":1705179592,
-            "localtime":"2024-01-13 15:59"
-        },
-        "current":{
-            "last_updated_epoch":1705178700,
-            "last_updated":"2024-01-13 15:45",
-            "temp_c":-1.1,
-            "temp_f":30,"is_day":1,
-            "condition":{
-                "text":"Overcast",
-                "icon":"//cdn.weatherapi.com/weather/64x64/day/122.png",
-                "code":1009
-            },
-            "wind_mph":27.3,
-            "wind_kph":43.9,
-            "wind_degree":280,
-            "wind_dir":"W",
-            "pressure_mb":998,
-            "pressure_in":29.47,
-            "precip_mm":0.18,
-            "precip_in":0.01,
-            "humidity":58,"cloud":100,
-            "feelslike_c":-7.7,
-            "feelslike_f":18.1,
-            "vis_km":16,
-            "vis_miles":9,
-            "uv":1,
-            "gust_mph":31.8,
-            "gust_kph":51.1
-        }
-    }
-let testObject2 = {"location":{"name":"Windsor","region":"Ontario","country":"Canada","lat":42.33,"lon":-83.03,"tz_id":"America/Detroit","localtime_epoch":1705179876,"localtime":"2024-01-13 16:04"},
-"current":{
-    "last_updated_epoch":1705179600,"last_updated":"2024-01-13 16:00","temp_c":-1.1,"temp_f":30,
-    "is_day":1,
-    "condition":{"text":"Overcast","icon":"//cdn.weatherapi.com/weather/64x64/day/122.png","code":1009},"wind_mph":27.3,"wind_kph":43.9,"wind_degree":280,"wind_dir":"W","pressure_mb":998,"pressure_in":29.47,"precip_mm":0.1,"precip_in":0,"humidity":58,"cloud":100,"feelslike_c":-8,"feelslike_f":17.6,"vis_km":16,"vis_miles":9,"uv":1,"gust_mph":31.8,"gust_kph":51.1}}
+
 
     let startDate: Date;
     let endDate: Date;
@@ -101,6 +58,4 @@ let testObject2 = {"location":{"name":"Windsor","region":"Ontario","country":"Ca
     
 {JSON.stringify(weatherObject)}
 
-<p>Temp: {testObject.current.temp_c}</p>
-<p>Threshold: {getThreshold(testObject.current.temp_c)}</p>
 {/await}
