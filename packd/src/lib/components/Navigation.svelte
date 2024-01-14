@@ -7,18 +7,7 @@
         <h1><a href='/'>packd.</a></h1>
         <h3>explore with ease.</h3>
     </div>
-    <button class="start-now" ><a href="/trip-details"> start now!</a></button>
-  
-    
-    <nav>
-        <!-- <ul>
-            <li><a href='/'>Home</a></li>
-            <li><a href='/trip-details'>Trip Details</a></li>
-            <li><a href='/packing-list'>Your Packing List</a></li>
-        </ul> -->
-        
-    </nav>
-    
+    <button class="start-now" ><a href="/trip-details"> start now!</a></button>    
 </header>
 
 <style>
@@ -34,9 +23,6 @@
         right: 1rem;
         margin: 0.8rem;
     }
-    /* .logo {
-        height: 80px;
-    } */
     h1{
         margin: 0;
         margin-left: 1rem;
@@ -50,17 +36,6 @@
         font-size: medium;
         font-weight: 400;
         transform: translateY(-8px);
-    }
-    nav {
-        align-self: center;
-    }
-    ul {
-        display: flex;
-        flex-direction: row;
-    }
-    li {
-        list-style-type: none;  
-        margin: 10px;
     }
     a {
         color: inherit;
