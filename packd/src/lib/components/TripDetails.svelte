@@ -171,10 +171,10 @@
         <div class="row">
 
             <div class="column-answer">
-                <p>Don't worry, if you feel like you've missed anything, you'll always be able to add it to the final list!</p><br>
+                <legend>Don't worry, if you feel like you've missed anything, you'll always be able to add it to the final list!</legend><br>
             </div>
             <div class="column-answer">
-                <button class="orange-button" on:click={submitForm}>Get your packing list now!</button>
+                <button style="color:#FFFFCC" on:click={submitForm}>Get your packing list now!</button>
             </div>
             
         </div>
@@ -188,7 +188,7 @@
 <style>
     
     p {
-        font-size: smaller;
+        font-size: 1.2rem;
         margin: 1.5rem
     }
 
@@ -206,22 +206,17 @@
 
 
     legend {
-        font-size: x-large;
+        font-size: 2rem;
         font-weight: 700;
         margin: 1.5rem;
     }
 
-    .grey-button {
-        background-color: var(--grey);
-    }
-
-    .orange-button {
-        background-color: var(--dark-coral);
-        
+    label {
+        font-size: 1.2rem;
     }
 
     .question {
-        font-size: x-large;
+        font-size: 2rem;
         font-weight: 700;
         margin: 1rem;
     }
@@ -243,7 +238,7 @@
         box-shadow: 5px 5px 5px var(--dark-coral);
         background-color: #FFFFCC;
         display: flex;
-        height: 20rem;
+        height: 25rem;
     }
     .column-question{
         flex: 50%;
