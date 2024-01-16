@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  deploy:
-    specifier: ^1.0.3
-    version: 1.0.3
-
 devDependencies:
   '@sveltejs/adapter-auto':
     specifier: ^3.0.0
@@ -953,11 +948,6 @@ packages:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /deploy@1.0.3:
-    resolution: {integrity: sha512-muJVK8p8idCiE+8JaQzvGD+vS3KtoJYx6jLu0Bq36vl7bOJVpm9dZGgoHFi89kI88oHdwa32TUTZ0exYyT0KLQ==}
-    hasBin: true
-    dev: false
 
   /dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
