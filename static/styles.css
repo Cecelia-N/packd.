@@ -33,3 +33,16 @@ h2 {
     min-width: fit-content;
     font-size: 1.3rem
 }
+
+.home-passport {
+    display: flex;
+    flex-direction:column;
+    background-image: url('./Passport.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 80%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 3rem;
+}
