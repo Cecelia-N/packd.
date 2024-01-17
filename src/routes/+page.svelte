@@ -4,7 +4,7 @@
 
 </script>
 <main>
-<section>
+<section class="home-passport">
     <h1>packd.</h1>
     <h2>Your personal supercharged packing list.</h2>
 
@@ -16,18 +16,7 @@
         height: 100vh;
         padding: 1rem;
     }
-    section{
-        display: flex;
-        flex-direction:column;
-        background-image: url('Passport.png');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        min-width: 80%;
-        height: 100vh;
-        margin: 0 auto;
-        padding: 3rem;
-    }
+
 
     h1, h2 {
         text-align: center;
