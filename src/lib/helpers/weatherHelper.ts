@@ -13,7 +13,7 @@ export function getThreshold(temp_c: number): 'freezing' | 'chilly'| 'warm' | 'h
 };
 const key = '2c9e2d11842e40a3827193356241301';
 export function getFutureWeather(city: string, startDate: Date){
-    const response = fetch(`http://api.weatherapi.com/v1/future.json?key=${key}&q=${city}&aqi=no&dt=${startDate}`, {
+    const response = fetch(`https://api.weatherapi.com/v1/future.json?key=${key}&q=${city}&aqi=no&dt=${startDate}`, {
     method: 'GET',
 })
     .then(async (res) => {
@@ -31,7 +31,7 @@ export function getFutureWeather(city: string, startDate: Date){
 
 export function getForecast(city: string, date: Date){
     const dateString = date.toString();
-const response = fetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&aqi=no&dt=${dateString}`, {
+const response = fetch(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&aqi=no&dt=${dateString}`, {
     method: 'GET',
 })
     .then(async (res) => {
