@@ -34,6 +34,10 @@ h2 {
     font-size: 1.3rem
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .home-passport {
     display: flex;
     flex-direction:column;

@@ -21,30 +21,39 @@
     let dress: string;
     
 </script>
-{JSON.stringify(avgTemp)}
-{dress}
-<div>
-    <label for="city">City</label>
-    <input name="city" bind:value={city}>
-</div>
+<section>
+    {JSON.stringify(avgTemp)}
+    {dress}
+    <div>
+        <label for="city">City</label>
+        <input name="city" bind:value={city}>
+    </div>
+    
+    <div>
+        <label for="startDate">Start Date</label>
+        <input name="startDate" bind:value={startDate} type="date">
+    </div>
+    
+    <div>
+        <label for="endDate">End Date</label>
+        <input name="endDate" bind:value={endDate} type="date">
+    </div>
+    
+    <!-- <input bind:value={days}> -->
+    <button on:click={() => {process()}}>Get my weather</button>
+    
+    {#await weatherObject}
+        loading...
+    {:then weatherObject}
+        <h2>weather object</h2>
+        <div>{JSON.stringify(weatherObject)}</div>
+    
+    {/await}
+</section>
 
-<div>
-    <label for="startDate">Start Date</label>
-    <input name="startDate" bind:value={startDate} type="date">
-</div>
-
-<div>
-    <label for="endDate">End Date</label>
-    <input name="endDate" bind:value={endDate} type="date">
-</div>
-
-<!-- <input bind:value={days}> -->
-<button on:click={() => {process()}}>Get my weather</button>
-
-{#await weatherObject}
-    loading...
-{:then weatherObject} 
-    <h2>weather object</h2>
-    <div>{JSON.stringify(weatherObject)}</div>
-
-{/await}
+<style>
+    
+    section {
+        background-color: var(--coral);
+    }
+</style>

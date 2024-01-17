@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
     import {createPackingList, type form} from '$lib/helpers/packer'
-	import { getClothes, getMisc, getTech, getTemp, getToiletries, getCity } from '$lib/stores/packinglist';
+	import { getClothes, getTech, getTemp, getToiletries, getCity } from '$lib/stores/packinglist';
 	import { fly } from 'svelte/transition';
    
     let form: form = {
@@ -22,7 +22,7 @@
     // const misc = getMisc();
 
     async function submitForm(){
-        const lists = createPackingList(form);
+        const lists = await createPackingList(form);
         $clothes = (await lists).clothes;
         $toiletries = (await lists).toiletries;
         $tech = (await lists).tech;
