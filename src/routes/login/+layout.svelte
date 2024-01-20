@@ -14,6 +14,7 @@
     {#if $auth}
         <!-- If the user is logged in, show site content -->
         You are logged in!
+        {goto('/')}
     {:else}
         <!-- Else, login -->
         <Auth />
