@@ -13,7 +13,10 @@ body {
 body, p, h2,h3, ul, li, form, input, button {
     font-family: "Lexend Deca";
 }
-
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
 h1{
     font-family: "Lexend Giga";
     color: var(--creme);
@@ -31,7 +34,8 @@ h2 {
     border: none;
     color: var(--creme);
     min-width: fit-content;
-    font-size: 1.3rem
+    font-size: 1.3rem;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -50,3 +54,43 @@ button:hover {
     margin: 0 auto;
     padding: 3rem;
 }
+
+.bg-coral {
+    background-color: var(--coral);
+    margin: 3rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px var(--grey);
+}
+
+body{
+    background-image: url('/pretty-globe.png');
+    background-size: contain;
+    background-position: center;
+}
+
+input {
+    display: block;
+    padding: 10px
+}
+
+label {
+    font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+    /* button{
+        background-color: #E3846B;
+        color: #414143;
+        padding: 1.2rem;
+        height: 1rem;
+        font-size: small;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        border: none;
+        font-size: 1.3rem;
+    } */
