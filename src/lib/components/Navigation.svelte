@@ -18,9 +18,10 @@ $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 ||
     </div>
     <nav>
         <ul>
+            {#if $auth}
             <li><a href="/trip-details">your trip.</a></li>
             <li><a href="/packing-list">your list.</a></li>
-            {#if $auth}
+       
             <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
             {/if}
         </ul>
