@@ -29,7 +29,6 @@ $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 ||
 
 <style>
     header {
-        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
