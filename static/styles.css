@@ -9,6 +9,9 @@
 body {
     background-color: var(--grey);
     margin: 0;
+    background-image: url('/pretty-globe.png');
+    background-size: contain;
+    background-position: center;
 }
 body, p, h2,h3, ul, li, form, input, button {
     font-family: "Lexend Deca";
@@ -61,12 +64,6 @@ button:hover {
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 5px 5px 5px var(--grey);
-}
-
-body{
-    background-image: url('/pretty-globe.png');
-    background-size: contain;
-    background-position: center;
 }
 
 input {
