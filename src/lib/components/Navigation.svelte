@@ -25,7 +25,8 @@ $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 ||
 
             <li><a href="/trip-details">your trip.</a></li>
             <li><a href="/packing-list">your list.</a></li>
-       
+            <li><a href="/about">about.</a></li>
+            
             <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
 
         </ul>
@@ -52,6 +53,7 @@ nav {
   top: 0;
   right: 0;
   overflow-x: hidden;
+  z-index: 99;
 }
 
 #navDrawer.active{ 
@@ -67,7 +69,7 @@ ul#navlist{
     list-style-type: none;
     transition: 0.3s;
     padding: 0;
-    margin-top: 2rem;
+    margin-top: 3.4rem;
     margin-bottom: 0;
 }
 ul#navlist li {  

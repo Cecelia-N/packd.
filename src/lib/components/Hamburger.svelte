@@ -19,6 +19,7 @@
 .hamburger {
     margin-bottom: 1rem;
     cursor: pointer;
+    z-index: 100;
 }
 
 .bar1,
