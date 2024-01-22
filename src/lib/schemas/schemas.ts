@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
 export const listItemSchema = z.object({
-    name: z.string(),
-    quantity: z.number(),
+    name: z.string().default(''),
+    quantity: z.number().default(1),
     packed: z.boolean().default(false)
 });
 
 export const listSchema = z.object({
-    name: z.string(),
+    listName: z.string(),
     items: z.array(listItemSchema)
 });
 
