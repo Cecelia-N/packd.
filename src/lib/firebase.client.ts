@@ -8,6 +8,7 @@ import {
 } from "$env/static/public"
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: PUBLIC_FIREBASE_apiKey,
@@ -23,3 +24,4 @@ export const firebaseApp = getApps.length === 0 ? initializeApp(firebaseConfig) 
 
 // Initialize Auth for client
 export const firebaseAuth = getAuth(firebaseApp);
+export const firestoreDB = getFirestore(firebaseApp);
