@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ListItem } from "$lib/stores/packinglist";
+	import type { listItemSchema } from "$lib/schemas/schemas";
 
     export let title: string;
-    export let list: ListItem[];
+    export let list: Zod.infer<typeof listItemSchema>[];
     let checked: boolean[] = [];
 
     list.forEach(item => {
@@ -16,7 +16,7 @@
     }
 
     function addItem(){
-        list.push({name: '',quantity: 1});
+        list.push({name: '',quantity: 1, packed: false});
         checked.push(false);
         list = list;
         checked = checked;
