@@ -2,7 +2,7 @@
   import Navigation from '$lib/components/Navigation.svelte'
 	import { setStores } from '$lib/stores/packinglist';
 	import { setAuth } from '$lib/stores/authStore';
-	import { getDocument, getLists, setDocument, setLists } from '$lib/stores/firestore';
+	import { getDocument, getLists, setDocument, setListIndex, setLists } from '$lib/stores/firestore';
 	import {  doc, getDoc } from 'firebase/firestore';
 	import { firebaseAuth, firestoreDB } from '$lib/firebase.client';
 	import { browser } from '$app/environment';
@@ -14,6 +14,7 @@
   setStores();
   setDocument(); 
   setLists();
+  setListIndex();
   const user = getDocument();
   const lists = getLists();
 

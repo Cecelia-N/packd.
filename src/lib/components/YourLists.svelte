@@ -1,6 +1,7 @@
 <script lang='ts'>
   import { listHandler } from "$lib/stores/listHandler";
 	import { getLists } from "$lib/stores/firestore";
+	import { goto } from "$app/navigation";
 
   export let index;
 
@@ -35,8 +36,9 @@
         <button on:click={()=>{deleteList(i)}}>Delete</button>
       </div>
     {/each}
-    <button on:click={()=>{newList()}}>create new list</button>
-  {/if}
+    <button on:click={()=>{newList()}}>create a blank list</button>
+    <button on:click={()=>{goto('/build-trip')}}>build a smart list</button>
+    {/if}
 </section>
 
 <style>
