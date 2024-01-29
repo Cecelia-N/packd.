@@ -1,39 +1,39 @@
 <script lang="ts">
-    import { authHandler, getAuthStore } from '$lib/stores/authStore';
-import {getClothes, getToiletries, getTech, getMisc} from '$lib/stores/packinglist'
+  import { authHandler, getAuthStore } from '$lib/stores/authStore';
+  import {getClothes, getToiletries, getTech, getMisc} from '$lib/stores/packinglist'
 	import { fly } from 'svelte/transition';
 	import Hamburger from './Hamburger.svelte';
 	import Logo from './Logo.svelte';
-    const clothes = getClothes();
-    const toiletries = getToiletries();
-    const tech = getTech();
-    const misc = getMisc();
+  const clothes = getClothes();
+  const toiletries = getToiletries();
+  const tech = getTech();
+  const misc = getMisc();
     
-    const auth = getAuthStore();
+  const auth = getAuthStore();
 
-$: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 || $misc.length > 0);
+  $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 || $misc.length > 0);
 
-    let menuActive = false;
+  let menuActive = false;
 </script>
 
 <header>
-    <Logo/>
+  <Logo/>
     {#if $auth}
     {#key menuActive}
     <nav id="navDrawer" class="{menuActive ? 'active' : 'hidden'}" transition:fly={{x: 300, duration: 900}}>
-        <ul id='navlist'>
+      <ul id='navlist'>
 
-            <li><a href="/trip-details">my trip.</a></li>
-            <li><a href="/my-lists">my lists.</a></li>
-            <li><a href="/about">about.</a></li>
-            
-            <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
+        <li><a href="/trip-details">my trip.</a></li>
+        <li><a href="/my-lists">my lists.</a></li>
+        <li><a href="/about">about.</a></li>
+        
+        <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
 
-        </ul>
+      </ul>
     </nav>
     {/key}
     {/if}
-    <Hamburger bind:menuActive/>
+  <Hamburger bind:menuActive/>
 </header>
 
 <style>
@@ -63,14 +63,14 @@ nav {
   border-radius: 5px;
 }
 ul#navlist{
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    list-style-type: none;
-    transition: 0.3s;
-    padding: 0;
-    margin-top: 3.4rem;
-    margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  list-style-type: none;
+  transition: 0.3s;
+  padding: 0;
+  margin-top: 3.4rem;
+  margin-bottom: 0;
 }
 ul#navlist li {  
   color: var(--dark-coral);
