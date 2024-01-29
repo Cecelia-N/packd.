@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type { listItemSchema } from "$lib/schemas/schemas";
-
-    export let title: string;
     export let list: Zod.infer<typeof listItemSchema>[];
     let checked: boolean[] = [];
 
@@ -24,7 +22,7 @@
 
 </script>
 <section>
-    <h3>{title}</h3>
+    <slot name="name"/>
     {#each list as item, i }
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -54,6 +52,8 @@
         text-decoration: line-through;
     }
     .list-item {
+        display: flex;
+        justify-content: space-between;
         border: .5px solid var(--grey);
         padding: 10px;
         box-shadow: 5px 5px 5px var(--grey);
@@ -102,5 +102,4 @@
         padding: .5rem;
         margin-top: 1rem;
     }
-
 </style>

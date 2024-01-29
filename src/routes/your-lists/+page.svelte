@@ -1,18 +1,13 @@
-<script lang="ts">
-	import { getAuthStore } from '$lib/stores/authStore';
-	import {  getDocument, getLists } from '$lib/stores/firestore';
-    import List from '$lib/components/List.svelte'
+<script lang='ts'>
+	import ShowList from "$lib/components/ShowList.svelte";
+	import YourLists from "$lib/components/YourLists.svelte";
+	import { getListIndex } from "$lib/stores/firestore";
 
-    const user = getDocument();
-
-    const auth = getAuthStore();
-    const lists = getLists();
-
+  const listIndex = getListIndex();
 </script>
-<section class="bg-coral">
-    {#if $lists}
-        {#each $lists as list}
-            <List  title={list.listName} list={list.items} />
-        {/each}
-    {/if}
-</section>
+{#if $listIndex == -1}
+  <YourLists bind:index={$listIndex}/>
+{:else}
+<button on:click={()=>{$listIndex = -1}}>back</button>
+  <ShowList index={$listIndex}/>
+{/if} 
