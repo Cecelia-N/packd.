@@ -10,6 +10,9 @@ export const listArraySchema = z.array(listItemSchema);
 
 export const listSchema = z.object({
   listName: z.string(),
+  tripLocation: z.string().optional(),
+  tripStart: z.date().optional(),
+  tripEnd: z.date().optional(),
   categories: z.array(z.object({
     category: z.string(),
     items: z.array(listItemSchema)

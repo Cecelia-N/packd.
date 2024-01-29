@@ -22,6 +22,9 @@
     console.log('submitting form...')
     $lists.push({
       listName: form.location,
+      tripLocation: form.location,
+      tripStart: form.startDate ?? undefined,
+      tripEnd: form.endDate ?? undefined,
       categories:[
         {
           category: 'clothing',
