@@ -23,8 +23,8 @@ $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 ||
     <nav id="navDrawer" class="{menuActive ? 'active' : 'hidden'}" transition:fly={{x: 300, duration: 900}}>
         <ul id='navlist'>
 
-            <li><a href="/trip-details">your trip.</a></li>
-            <li><a href="/packing-list">your list.</a></li>
+            <li><a href="/trip-details">my trip.</a></li>
+            <li><a href="/my-lists">my lists.</a></li>
             <li><a href="/about">about.</a></li>
             
             <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
