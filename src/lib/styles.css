@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&display=swap');
 :root {
-    --grey: #414143;
+    --shadow: #414143;
     --creme: #FFFFCC;
     --coral: #E3846B;
     --dark-coral: #A84528;
 }
 body {
-    background-color: var(--grey);
+    background-color: var(--shadow);
     margin: 0;
     background-image: url('/pretty-globe.png');
+    background-attachment: fixed;
     background-size: 100vw;
     background-repeat: repeat-y;
 }
@@ -24,7 +25,6 @@ h1{
     font-family: "Lexend Giga";
     color: var(--creme);
     font-size: 2rem;
-    margin-bottom: 0;
 }
 
 h2 {
@@ -32,7 +32,7 @@ h2 {
 }
 
 .btn-cta{
-    background-color: var(--grey);
+    background-color: var(--shadow);
     padding: 10px;
     border: none;
     color: var(--creme);
@@ -45,25 +45,12 @@ button:hover {
     cursor: pointer;
 }
 
-.home-passport {
-    display: flex;
-    flex-direction:column;
-    background-image: url('./Passport.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-width: 80%;
-    height: 100vh;
-    margin: 0 auto;
-    padding: 3rem;
-}
-
 .bg-coral {
     background-color: var(--coral);
     margin: 3rem;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px var(--grey);
+    box-shadow: 5px 5px 5px var(--shadow);
 }
 
 input {

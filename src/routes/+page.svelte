@@ -1,33 +1,27 @@
 <script>
-
 	import { goto } from "$app/navigation";
+	import Globe from "$lib/components/assets/Globe.svelte";
+	import Passport from "$lib/components/assets/Passport.svelte";
 
 </script>
-<main>
+<Passport />
 <section class="home-passport">
+  <div>
     <h1>packd.</h1>
     <h2>Your personal supercharged packing list.</h2>
-
-    <button class="btn-cta" type='button' on:click={() => goto('/trip-details')}>get started</button>
+  </div>
+  <Globe/>
+  <button class="btn-cta" type='button' on:click={() => goto('/trip-details')}>get started</button>
 </section>
-</main>
 <style>
-    main{
-        height: 100vh;
-        padding: 1rem;
-    }
-
-
-    h1, h2 {
-        text-align: center;
-    }
-
-    h1{
-        margin-top: 4;
-        font-size: 3rem;
-    }
-
-    .btn-cta {
-        align-self: center;
-    }
+  .home-passport {
+    display: grid;
+    margin: 0 auto;
+    justify-items: center;
+    text-align: center;
+    padding:2rem;
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+  }
 </style>
