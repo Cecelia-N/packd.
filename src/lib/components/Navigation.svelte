@@ -11,7 +11,7 @@ import {getClothes, getToiletries, getTech, getMisc} from '$lib/stores/packingli
     
     const auth = getAuthStore();
 
-$: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 || $misc.length > 0);
+  $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 || $misc.length > 0);
 
     let menuActive = false;
 </script>
@@ -19,21 +19,22 @@ $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 ||
 <header>
     <Logo/>
     <Hamburger bind:menuActive/>
-    {#if $auth}
     {#key menuActive}
-    <nav id="navDrawer" class="{menuActive ? 'active' : 'hidden'}" transition:fly={{x: 300, duration: 900}}>
-        <ul id='navlist'>
-
-            <li><a href="/trip-details">your trip.</a></li>
-            <li><a href="/packing-list">your list.</a></li>
-            <li><a href="/about">about.</a></li>
-            
-            <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
-
-        </ul>
+    <nav id="navDrawer" class="{menuActive ? 'active' : 'hidde'}" transition:fly={{x: 300, duration: 900}}>
+      <ul id='navlist'>
+        {#if $auth}
+        
+        <li><a href="/my-trips">my trips.</a></li>
+        <!-- <li><a href="/packing-list">your list.</a></li> -->
+        
+        <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
+        {:else}
+        <li><a href="/login">login.</a></li>
+        {/if}
+        <li><a href="/about">about packd.</a></li>
+      </ul>
     </nav>
     {/key}
-    {/if}
   
 </header>
 
@@ -67,12 +68,12 @@ nav {
   border-radius: 5px;
 }
 ul#navlist{
-    display: grid;
-    list-style-type: none;
-    transition: 0.3s;
-    padding: 0;
-    margin-top: 3.4rem;
-    margin-bottom: 0;
+  display: grid;
+  list-style-type: none;
+  transition: 0.3s;
+  padding: 0;
+  margin-top: 3.4rem;
+  margin-bottom: 0;
 }
 ul#navlist li {  
   color: var(--dark-coral);
