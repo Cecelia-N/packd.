@@ -10,10 +10,12 @@
     const auth = getAuthStore();
 </script>
 <Navigation></Navigation>
-<main>
+<div class="main-body">
 <slot/>
-</main>
+</div>
 
 <style>
-
+  .main-body {
+    padding-top: 6rem;
+  }
 </style>

@@ -17,9 +17,11 @@
 <style>
 /* HAMBURGER TOGGLE STYLES */
 .hamburger {
-    margin-bottom: 1rem;
+    display: inline;
     cursor: pointer;
     z-index: 100;
+    justify-self: end;
+    margin-right: 1rem;
 }
 
 .bar1,

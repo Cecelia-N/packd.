@@ -18,6 +18,7 @@ $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 ||
 
 <header>
     <Logo/>
+    <Hamburger bind:menuActive/>
     {#if $auth}
     {#key menuActive}
     <nav id="navDrawer" class="{menuActive ? 'active' : 'hidden'}" transition:fly={{x: 300, duration: 900}}>
@@ -33,23 +34,26 @@ $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 ||
     </nav>
     {/key}
     {/if}
-    <Hamburger bind:menuActive/>
+  
 </header>
 
 <style>
 header{
-  background-color: var(--creme);
-  display: flex;
-  justify-content: space-between;
+  position: fixed;
+  display: grid;
   align-items: center;
-  padding-top: 1rem;
-  padding-right: 1rem;
+  grid-template-columns: 1fr 1fr;
+  top:  0;
+  width: 100%;
+  background-color: var(--creme);
+  z-index: 99;
 }
 
 nav {
   /* default styles for nav - (mobile) */
   width: 0;
   position: fixed;
+  justify-self: end;
   top: 0;
   right: 0;
   overflow-x: hidden;
@@ -63,9 +67,7 @@ nav {
   border-radius: 5px;
 }
 ul#navlist{
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
+    display: grid;
     list-style-type: none;
     transition: 0.3s;
     padding: 0;
@@ -87,7 +89,6 @@ ul#navlist li:hover, li:active{
 }
 @media screen and (min-width: 768px) {
   ul#navlist {
-    
     display: flex;
     flex-direction: row;
     margin: 0;
