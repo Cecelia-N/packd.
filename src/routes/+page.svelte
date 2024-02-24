@@ -4,8 +4,8 @@
 	import Passport from "$lib/components/assets/Passport.svelte";
 
 </script>
-<Passport />
 <section class="home-passport">
+  <Passport />
   <div>
     <h1>packd.</h1>
     <h2>Your personal supercharged packing list.</h2>
@@ -19,7 +19,7 @@
     margin: 0 auto;
     justify-items: center;
     text-align: center;
-    padding:2rem;
+    padding:1.5rem;
     position: relative;
     width: 80%;
     max-width: 600px;
