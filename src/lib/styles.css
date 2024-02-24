@@ -10,8 +10,8 @@ body {
     background-color: var(--grey);
     margin: 0;
     background-image: url('/pretty-globe.png');
-    background-size: contain;
-    background-position: center;
+    background-size: 100vw;
+    background-repeat: repeat-y;
 }
 body, p, h2,h3, ul, li, form, input, button {
     font-family: "Lexend Deca";
