@@ -4,7 +4,7 @@
 import { browser } from "$app/environment";
 import { firebaseAuth, firestoreDB } from "$lib/firebase.client";
 import { tripSchema } from "$lib/schemas";
-import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc, type DocumentData } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc, type DocumentData } from "firebase/firestore";
 import { getContext, setContext } from "svelte";
 import { writable, type Writable } from "svelte/store";
 import { z } from 'zod';
@@ -29,6 +29,58 @@ export function setTrips() {
 export function getTrips() {
   return getContext<DocumentContext>("docStore");
 }
+// Functions for CRUD trips
+export const tripHandler = {
+  createTrip: async(payload: DocumentData) => {
+    if (!firestoreDB || !browser || !firebaseAuth.currentUser) {
+      console.log('failed to create trip.')
+      return false;
+    }
+    console.log(payload)
+    await addDoc(collection(firestoreDB, "trips", firebaseAuth.currentUser.uid, 'my-trips'), payload)
+      .catch(() => {
+        console.log('failed to create trip.')
+        return false
+      });
+    console.log('successfully created trip')
+    return true;
+  },
+  getTrip: async (tripId: string) => {
+    if(!firebaseAuth.currentUser || !browser){
+      return null;
+    }
+    const docRef = doc(firestoreDB, "trips", firebaseAuth?.currentUser?.uid||"", 'my-trips', tripId);
+    return (await getDoc(docRef)).data() ?? null;
+  },
+  updateTrip: async (tripId: string, payload: DocumentData) => {
+      if (!firebaseAuth||!browser||!payload) {
+          return false;
+      }
+      const docRef = doc(firestoreDB, "trips", firebaseAuth?.currentUser?.uid||"", 'my-trips', tripId);
+      const res = await updateDoc(docRef, payload).then(() => {
+        // update store?
+        return true;
+      })
+      .catch(() => {
+        alert("We ran into an issue and were unable to update your data. Please contact our support!");
+        return false;
+      });
+      return res;
+  },
+  deleteTrip: async (tripId: string)=>{
+    if (!firebaseAuth||!browser) {
+      return false;
+    }
+    const docRef = doc(firestoreDB, "trips", firebaseAuth?.currentUser?.uid || "", 'my-trips', tripId);
+    const res = deleteDoc(docRef).catch(() => {
+      alert('Failed to delete trip. Please contact support if this issue persists.')
+    });
+    return res
+    }
+  }
+
+
+
 
 /**
  * Handler for working with the docStore which contains the Will data
@@ -134,20 +186,7 @@ export const docHandler = {
       })
     return res;
   },
-  createTrip: async(payload: DocumentData) => {
-    if (!firestoreDB || !browser || !firebaseAuth.currentUser) {
-      console.log('failed to create trip.')
-      return false;
-    }
-    console.log(payload)
-    await addDoc(collection(firestoreDB, "trips", firebaseAuth.currentUser.uid, 'my-trips'), payload)
-      .catch(() => {
-        console.log('failed to create trip.')
-        return false
-      });
-    console.log('successfully created trip')
-    return true;
-  },
+
 
 
   /**
