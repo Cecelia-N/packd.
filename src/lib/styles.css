@@ -1,69 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&display=swap');
 :root {
-    --shadow: #414143;
-    --creme: #FFFFCC;
-    --coral: #E3846B;
-    --dark-coral: #A84528;
+  --shadow: #414143;
+  --creme: #FFFFCC;
+  --coral: #E3846B;
+  --dark-coral: #A84528;
 }
 body {
-    background-color: var(--shadow);
-    margin: 0;
-    background-image: url('/pretty-globe.png');
-    background-attachment: fixed;
-    background-size: 100vw;
-    background-repeat: repeat-y;
+  background-color: var(--shadow);
+  margin: 0;
+  background-image: url('/pretty-globe.png');
+  background-attachment: fixed;
+  background-size: 100vw;
+  background-repeat: repeat-y;
 }
 body, p, h2,h3, ul, li, form, input, button {
-    font-family: "Lexend Deca";
+  font-family: "Lexend Deca";
 }
 a {
-    color: inherit;
-    text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 }
 h1{
-    font-family: "Lexend Giga";
-    color: var(--creme);
-    font-size: 2rem;
+  font-family: "Lexend Giga";
+  color: var(--creme);
+  font-size: 2rem;
 }
 
 h2 {
-    font-size: 1.2rem
+  font-size: 1.2rem
 }
 
 .btn-cta{
-    background-color: var(--shadow);
-    padding: 10px;
-    border: none;
-    color: var(--creme);
-    min-width: fit-content;
-    font-size: 1.3rem;
-    margin-top: 10px;
+  background-color: var(--shadow);
+  padding: 10px;
+  border: none;
+  color: var(--creme);
+  min-width: fit-content;
+  font-size: 1.3rem;
+  margin-top: 10px;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .bg-coral {
-    background-color: var(--coral);
-    margin: 3rem;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px var(--shadow);
+  background-color: var(--coral);
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--shadow);
 }
 
 input {
-    display: block;
-    padding: 10px
+  display: block;
+  padding: 10px
 }
 
 label {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
     /* button{
