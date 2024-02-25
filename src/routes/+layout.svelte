@@ -2,7 +2,7 @@
   import { browser } from '$app/environment';
   import Navigation from '$lib/components/Navigation.svelte';
   import { firebaseAuth } from '$lib/firebase.client';
-  import { getAuthStore, setAuth } from '$lib/stores/authStore';
+  import { setAuth } from '$lib/stores/authStore';
   import { setStores } from '$lib/stores/packinglist';
   import { docHandler, getTrips, setTrips } from '$lib/stores/tripsStore';
   import '$lib/styles.css';
@@ -19,12 +19,12 @@
       if (e) {
         await docHandler.setTrips(trips);
       } else {
-        docHandler.clearTrips(trips);
+        // console.log('trips have been cleared.');
+        // docHandler.clearTrips(trips);
+        // TODO
       }
     });
   }
-
-  const auth = getAuthStore();
 </script>
 
 <Navigation></Navigation>

@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
   import { tripSchema } from '$lib/schemas';
-  import { docHandler } from '$lib/stores/tripsStore';
+  import { tripHandler } from '$lib/stores/tripsStore';
   import { defaults, superForm } from 'sveltekit-superforms';
   import { zod } from 'sveltekit-superforms/adapters';
   import type { PageData } from './$types';
@@ -18,7 +19,8 @@
         return;
       } else {
         console.log('requesting create trip');
-        await docHandler.createTrip(form.data);
+        const res = await tripHandler.createTrip(form.data);
+        goto('/my-trips');
       }
     },
     onSubmit: async (input) => {

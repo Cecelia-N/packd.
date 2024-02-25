@@ -3,7 +3,7 @@
 //import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { browser } from "$app/environment";
 import { firebaseAuth, firestoreDB } from "$lib/firebase.client";
-import { tripSchema } from "$lib/schemas";
+import { partialTripSchema, tripSchema } from "$lib/schemas";
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc, type DocumentData } from "firebase/firestore";
 import { getContext, setContext } from "svelte";
 import { writable, type Writable } from "svelte/store";
@@ -17,7 +17,6 @@ export function setTrips() {
   const docStore = writable(null);
   setContext("docStore", docStore);
 }
-
 
 /**
  * 
@@ -37,18 +36,23 @@ export const tripHandler = {
       return false;
     }
     console.log(payload)
-    await addDoc(collection(firestoreDB, "trips", firebaseAuth.currentUser.uid, 'my-trips'), payload)
+    const res = await addDoc(collection(firestoreDB, "trips", firebaseAuth.currentUser.uid, 'my-trips'), payload)
       .catch(() => {
         console.log('failed to create trip.')
         return false
       });
     console.log('successfully created trip')
-    return true;
+    return{
+      success: true,
+      res
+     };
   },
   getTrip: async (tripId: string) => {
-    if(!firebaseAuth.currentUser || !browser){
+    if (!firebaseAuth.currentUser || !browser) {
+      console.log('must be logged in.')
       return null;
     }
+    console.log('getting trip...')
     const docRef = doc(firestoreDB, "trips", firebaseAuth?.currentUser?.uid||"", 'my-trips', tripId);
     return (await getDoc(docRef)).data() ?? null;
   },
@@ -119,27 +123,39 @@ export const docHandler = {
     return (await getDoc(docRef)).data() ?? null;
   },
 
-  getTrip: async (id: string) => {
+  getTrip: async (id: string): Promise< z.infer <typeof partialTripSchema> | null> => {
     if(!firebaseAuth.currentUser || !browser){
       return null;
     }
+
     const docRef = doc(firestoreDB, 'trips', firebaseAuth?.currentUser?.uid || "", 'my-trips', id);
-    return (await getDoc(docRef)).data() ?? null;
+    const data = partialTripSchema.safeParse((await getDoc(docRef)).data());
+    if (data.success) {
+      return data.data
+    } else {
+      console.log('parsing error occured. Invalid data')
+      return null
+    }
   },
 
-  getAllTrips: async () => {
+  getAllTrips: async (): Promise<Map<string, z.infer <typeof partialTripSchema>> | null> => {
     if(!firebaseAuth.currentUser || !browser){
       return null;
     }
-    const trips: z.infer <typeof tripSchema>[] = []
+
+    const trips: Map<string, z.infer <typeof partialTripSchema>> = new Map();
 
     const querySnapshot = await getDocs(collection(firestoreDB, 'trips', firebaseAuth?.currentUser?.uid || "", 'my-trips'));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      trips.push(tripSchema.parse(doc.data()))
+      const data = tripSchema.partial().safeParse(doc.data());
+      if (data.success) {
+        trips.set(doc.id, data.data);
+      } else {
+        console.log('parsing error occured. Invalid data');
+      }
     });
     return trips;
-
   },
 
 
