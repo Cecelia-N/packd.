@@ -4,9 +4,10 @@
 import { browser } from "$app/environment";
 import { firebaseAuth, firestoreDB } from "$lib/firebase.client";
 import { tripSchema } from "$lib/schemas";
-import { collection, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc, type DocumentData } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc, type DocumentData } from "firebase/firestore";
 import { getContext, setContext } from "svelte";
 import { writable, type Writable } from "svelte/store";
+import { z } from 'zod';
 
 export type DocumentContext = Writable<DocumentData>;
 /**
@@ -78,12 +79,12 @@ export const docHandler = {
     if(!firebaseAuth.currentUser || !browser){
       return null;
     }
-    const trips: DocumentData[] = []
+    const trips: z.infer <typeof tripSchema>[] = []
 
     const querySnapshot = await getDocs(collection(firestoreDB, 'trips', firebaseAuth?.currentUser?.uid || "", 'my-trips'));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      trips.push(tripSchema.safeParse(doc.data()))
+      trips.push(tripSchema.parse(doc.data()))
     });
     return trips;
 
@@ -132,6 +133,20 @@ export const docHandler = {
         return false;
       })
     return res;
+  },
+  createTrip: async(payload: DocumentData) => {
+    if (!firestoreDB || !browser || !firebaseAuth.currentUser) {
+      console.log('failed to create trip.')
+      return false;
+    }
+    console.log(payload)
+    await addDoc(collection(firestoreDB, "trips", firebaseAuth.currentUser.uid, 'my-trips'), payload)
+      .catch(() => {
+        console.log('failed to create trip.')
+        return false
+      });
+    console.log('successfully created trip')
+    return true;
   },
 
 
