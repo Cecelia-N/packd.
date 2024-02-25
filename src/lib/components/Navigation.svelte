@@ -1,41 +1,40 @@
 <script lang="ts">
-    import { authHandler, getAuthStore } from '$lib/stores/authStore';
-import {getClothes, getToiletries, getTech, getMisc} from '$lib/stores/packinglist'
-	import { fly } from 'svelte/transition';
-	import Hamburger from './Hamburger.svelte';
-	import Logo from './Logo.svelte';
-    const clothes = getClothes();
-    const toiletries = getToiletries();
-    const tech = getTech();
-    const misc = getMisc();
-    
-    const auth = getAuthStore();
+  import { authHandler, getAuthStore } from '$lib/stores/authStore';
+  import { getClothes, getMisc, getTech, getToiletries } from '$lib/stores/packinglist';
+  import { fly } from 'svelte/transition';
+  import Hamburger from './Hamburger.svelte';
+  import Logo from './Logo.svelte';
+  const clothes = getClothes();
+  const toiletries = getToiletries();
+  const tech = getTech();
+  const misc = getMisc();
+  
+  const auth = getAuthStore();
 
   $: hasList = ($clothes.length>0 || $toiletries.length > 0 || $tech.length > 0 || $misc.length > 0);
 
-    let menuActive = false;
+  let menuActive = false;
 </script>
 
 <header>
-    <Logo/>
-    <Hamburger bind:menuActive/>
-    {#key menuActive}
-    <nav id="navDrawer" class="{menuActive ? 'active' : 'hidde'}" transition:fly={{x: 300, duration: 900}}>
-      <ul id='navlist'>
-        {#if $auth}
-        
-        <li><a href="/my-trips">my trips.</a></li>
-        <!-- <li><a href="/packing-list">your list.</a></li> -->
-        
-        <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
-        {:else}
-        <li><a href="/login">login.</a></li>
-        {/if}
-        <li><a href="/about">about packd.</a></li>
-      </ul>
-    </nav>
-    {/key}
-  
+  <Logo/>
+  <Hamburger bind:menuActive/>
+  {#key menuActive}
+  <nav id="navDrawer" class="{menuActive ? 'active' : 'hidde'}" transition:fly={{x: 300, duration: 900}}>
+    <ul id='navlist'>
+      {#if $auth}
+      
+      <li><a href="/my-trips">my trips.</a></li>
+      <!-- <li><a href="/packing-list">your list.</a></li> -->
+      
+      <li><a href="/" on:click={()=>{authHandler.logout()}}>logout</a></li>
+      {:else}
+      <li><a href="/login">login.</a></li>
+      {/if}
+      <li><a href="/about">about packd.</a></li>
+    </ul>
+  </nav>
+  {/key}
 </header>
 
 <style>
