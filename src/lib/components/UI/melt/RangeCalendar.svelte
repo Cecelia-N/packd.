@@ -59,6 +59,13 @@
 </section>
 
 <style>
+  [data-melt-calendar] {
+    /* @apply w-full rounded-lg bg-white p-3 text-magnum-800 shadow-sm; */
+    display: grid;
+    justify-items: center;
+    width: max-content;
+  }
+
   header {
     /* < PREV MONTH/YEAR NEXT > */
     display: grid;
@@ -66,6 +73,7 @@
     justify-content: space-between;
     text-align: center;
     padding-bottom: 0.5rem;
+    width: 100%;
   }
   [data-melt-calendar-heading] {
     font-weight: 600;
@@ -76,21 +84,6 @@
     border: none;
   }
 
-  /* MELT DEFAULT STYLES */
-  [data-melt-calendar] {
-    /* @apply w-full rounded-lg bg-white p-3 text-magnum-800 shadow-sm; */
-  }
-
-  th {
-    /* @apply text-sm font-semibold text-magnum-800; */
-
-    & div {
-      /* @apply flex h-6 w-6 items-center justify-center p-4; */
-      height: 1rem;
-      width: 1rem;
-      text-align: center;
-    }
-  }
   [data-melt-calendar-cell][data-selected] {
     background-color: var(--coral);
   }
@@ -101,6 +94,7 @@
     border-radius: 30%;
     color: black;
     font-weight: 600;
+    text-align: center;
   }
 
   [data-melt-calendar-cell]:hover,
