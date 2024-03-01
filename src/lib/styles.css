@@ -31,6 +31,13 @@ h2 {
   font-size: 1.2rem
 }
 
+button {
+  background-color: #FFFFCC;
+  border: none;
+  padding: .4rem;
+  border-radius: .3rem;
+}
+
 .btn-cta{
   background-color: var(--shadow);
   padding: 10px;
