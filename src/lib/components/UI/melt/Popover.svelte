@@ -2,7 +2,6 @@
   import { createPopover, melt } from '@melt-ui/svelte';
   import { fade } from 'svelte/transition';
   // import { Settings2, X } from '$icons/index.js';
-  export let btnText: string = 'open popover';
   const {
     elements: { trigger, content, arrow, close },
     states: { open }
@@ -13,7 +12,7 @@
 
 <button type="button" class="trigger" use:melt={$trigger} aria-label="Update dimensions">
   <!-- <Settings2 class="size-4" /> -->
-  <span class="sr-only">{btnText}</span>
+  <span class="sr-only"><slot name="button" /></span>
 </button>
 
 {#if $open}

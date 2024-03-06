@@ -1,11 +1,21 @@
 <script lang="ts">
+  import type { DateValue } from '@internationlized/date';
   import { createDateRangeField, melt } from '@melt-ui/svelte';
-
+  export let startDate: DateValue;
+  export let endDate: DateValue;
   const {
     elements: { field, startSegment, endSegment, label },
-    states: { segmentContents },
+    states: { segmentContents, value },
     options: {}
-  } = createDateRangeField();
+  } = createDateRangeField({
+    defaultValue: {
+      start: startDate,
+      end: endDate
+    }
+  });
+
+  $: startDate = $value.start;
+  $: endDate = $value.end;
 </script>
 
 <div class="input-group">

@@ -50,19 +50,3 @@
 
   <button type="submit">create trip</button>
 </form>
-
-<style>
-  form {
-    display: grid;
-  }
-  input {
-    border-radius: 0.3rem;
-    border: none;
-    box-shadow: 2px 2px 2px var(--shadow);
-  }
-
-  input:focus {
-    box-shadow: 2px 2px 10px var(--creme);
-    border: none;
-  }
-</style>

@@ -1,18 +1,29 @@
 <script lang="ts">
+  import type { CalendarDate } from '@internationlized/date';
   import { createRangeCalendar, melt } from '@melt-ui/svelte';
+
+  export let startDate: CalendarDate;
+  export let endDate: CalendarDate;
 
   const {
     elements: { calendar, heading, grid, cell, prevButton, nextButton },
     states: { months, headingValue, weekdays, startValue, endValue },
     helpers: { isDateDisabled, isDateUnavailable },
     options: { fixedWeeks }
-  } = createRangeCalendar();
+  } = createRangeCalendar({
+    defaultValue: {
+      start: startDate,
+      end: endDate
+    }
+  });
 
   // set the calendar to always show 6 weeks to avoid height changes
   $fixedWeeks = true;
+
+  $: startDate = $startValue;
+  $: endDate = $endValue;
 </script>
 
-{$startValue} - {$endValue}
 <section>
   <div class="input" use:melt={$calendar}>
     <header>
